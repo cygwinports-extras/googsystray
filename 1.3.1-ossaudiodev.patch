@@ -1,0 +1,23 @@
+--- origsrc/googsystray-1.3.1/googsystray/GNotification.py	2010-12-22 13:54:00.000000000 -0600
++++ src/googsystray-1.3.1/googsystray/GNotification.py	2010-12-22 22:47:55.254611800 -0600
+@@ -43,7 +43,6 @@ if os.name == "nt":
+ 	from winsound import PlaySound, SND_FILENAME, SND_ASYNC
+ else:
+ 	import wave
+-	import ossaudiodev
+ 	import ctypes
+ 	
+ 	asound = None
+@@ -116,7 +115,11 @@ def play_sound(fname):
+ 		if asound is not None:
+ 			threading.Thread(target=play_sound_linux_alsa, args=[snd_file]).start()
+ 		else:
+-			threading.Thread(target=play_sound_linux_oss, args=[snd_file]).start()
++			try:
++				import ossaudiodev
++				threading.Thread(target=play_sound_linux_oss, args=[snd_file]).start()
++			except:
++				googsystray.error("Sound not supported on this platform.")
+ 	else:
+ 		googsystray.error("Sound not supported on this platform.")
+ 
