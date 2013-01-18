@@ -1,9 +1,0 @@
-category: Mail X11
-requires: python python-cairo python-gnomekeyring python-gtk2.0
-sdesc: "Tray icon for Google services"
-ldesc: "Googsystray is a system tray app for Google Voice, GMail, Google 
-Calendar, Google Reader, and Google Docs. The idea is to be able to keep 
-track of all that stuff without having to keep a bunch of browser tabs 
-open, or constantly checking them. It notifies on new messages, alerts, 
-etc., and provides basic services quickly (Reading or sending a new SMS 
-message, or marking an email read, for example.)"
